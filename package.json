@@ -1,0 +1,44 @@
+{
+    "name": "OCR-app",
+    "description": "Document processing pipeline",
+    "type": "module",
+    "main": "dist/server.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "npx nodemon",
+        "dev": "npx nodemon",
+        "test": "node --loader ts-node/esm ./node_modules/mocha/bin/mocha --recursive \"tests/**/*.test.ts\" --exit"
+    },
+    "dependencies": {
+        "bullmq": "^5.56.0",
+        "chai": "^5.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^17.0.1",
+        "express": "^5.1.0",
+        "express-rate-limit": "^7.5.1",
+        "helmet": "^8.1.0",
+        "http": "^0.0.1-security",
+        "ioredis": "^5.6.1",
+        "multer": "^2.0.1",
+        "redis": "^5.5.6",
+        "sinon": "^21.0.0",
+        "uuid": "^11.1.0",
+        "winston": "^3.17.0",
+        "zod": "^3.25.67"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.19.6",
+        "@types/chai": "^5.2.2",
+        "@types/cors": "^2.8.19",
+        "@types/helmet": "^0.0.48",
+        "@types/mocha": "^10.0.10",
+        "@types/multer": "^1.4.13",
+        "@types/node": "^20.5.6",
+        "@types/sinon": "^17.0.4",
+        "mocha": "^11.7.1",
+        "nodemon": "^3.1.10",
+        "nyc": "^15.1.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    }
+}

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      # Override values from .env inside Docker
+        REDIS_URL: redis://redis:6379
+        REDIS_HOST: redis
+        REDIS_PORT: 6379
+    depends_on:
+      - redis
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
