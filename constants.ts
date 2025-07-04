@@ -35,3 +35,5 @@ export const defaultMetadata = {
         address: "123 Street"
     }
 };
+
+export const OCRConfidenceThreshold = 0.9;

@@ -12,18 +12,22 @@ export const uploadHandler = async (req: Request, res: Response, next: NextFunct
     }
 
     const docId = uuidv4();
+    const filePath = req.file.path;
 
     try {
         await saveDocument(docId, {
             status: DocumentStatus.Uploaded,
             originalName: req.file.originalname,
+            file_path: filePath,
             timestamps: { uploadedAt: new Date().toISOString() },
+            metadata: {},
+            error: null
         });
 
         await processingQueue.add('process-doc', {
             docId,
-            path: req.file.path,
-            originalName: req.file.originalname,
+            path: filePath,
+            originalName: req.file.originalname
         });
 
         logger.log('info', `Document ${docId} uploaded and queued for processing`);
@@ -34,4 +38,3 @@ export const uploadHandler = async (req: Request, res: Response, next: NextFunct
         next(error);
     }
 };
-
