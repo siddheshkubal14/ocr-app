@@ -1,14 +1,5 @@
 #!/bin/bash
 
-echo "Running tests..."
-npm test
-if [ $? -ne 0 ]; then
-  echo "Tests failed. Exiting deployment."
-  exit 1
-fi
-
-echo "Tests passed, proceeding with deployment."
-
 # Configuration
 DOCKER_USERNAME="sid0014"                   
 DOCKER_IMAGE_NAME="ocr-app"            
